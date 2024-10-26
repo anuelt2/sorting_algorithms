@@ -20,7 +20,7 @@ void shell_sort(int *array, size_t size)
 		interval = interval * 3 + 1;
 	}
 
-	for (interval = interval; interval >= 1; interval = (interval - 1) / 3)
+	for (interval = interval; interval >= 1; interval /= 3)
 	{
 		for (j = interval; j < size; j++)
 		{
