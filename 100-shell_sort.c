@@ -24,16 +24,10 @@ void shell_sort(int *array, size_t size)
 	{
 		for (j = interval; j < size; j++)
 		{
-			for (i = j - interval; i >= 0; i -= interval)
+			for (i = j - interval; i >= 0 && array[i + interval]
+					< array[i]; i -= interval)
 			{
-				if (array[i + interval] > array[i])
-				{
-					break;
-				}
-				else
-				{
-					swap(&array[i + interval], &array[i]);
-				}
+				swap(&array[i + interval], &array[i]);
 			}
 		}
 		print_array(array, size);
