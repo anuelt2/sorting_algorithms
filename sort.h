@@ -27,5 +27,7 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 void swap(int *a, int *b);
 void shell_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
+void list_node_swap(listint_t **head, listint_t *f_temp, listint_t *b_temp);
 
 #endif
