@@ -22,8 +22,6 @@ void quick_sort(int *array, size_t size)
 		o_array = array;
 		o_size = size;
 	}
-	if (size < 2)
-		return;
 	pivot = array[size - 1];
 	i = 0;
 	for (j = 0; j < size - 1; j++)
