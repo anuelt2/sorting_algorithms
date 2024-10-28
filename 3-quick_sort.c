@@ -10,18 +10,27 @@
 
 void quick_sort(int *array, size_t size)
 {
-	int pivot;
-	size_t i, j;
-	static int *o_array;
-	static size_t o_size;
-
 	if (array == NULL || size < 2)
 		return;
-	if (o_array == NULL)
-	{
-		o_array = array;
-		o_size = size;
-	}
+	sort_function(array, size, array, size);
+}
+
+/**
+ * sort_function - Performs sorting of arrays
+ *
+ * @array: The array to be sorted
+ * @size: The size of @array
+ * @o_array: Original array
+ * @o_size: Original number of elements of @o_array
+ */
+
+void sort_function(int *array, size_t size, int *o_array, size_t o_size)
+{
+	int pivot;
+	size_t i, j;
+
+	if (size < 2)
+		return;
 	pivot = array[size - 1];
 	i = 0;
 	for (j = 0; j < size - 1; j++)
@@ -41,13 +50,8 @@ void quick_sort(int *array, size_t size)
 		swap(&array[i], &array[size - 1]);
 		print_array(o_array, o_size);
 	}
-	quick_sort(array, i);
-	quick_sort(array + i + 1, size - i - 1);
-	if (array == o_array && size == o_size)
-	{
-		o_array = NULL;
-		o_size = 0;
-	}
+	sort_function(array, i, o_array, o_size);
+	sort_function(array + i + 1, size - i - 1, o_array, o_size);
 }
 
 /**
