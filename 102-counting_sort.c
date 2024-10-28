@@ -10,10 +10,13 @@
 
 void counting_sort(int *array, size_t size)
 {
-	int i, k, *count, *sorted;
+	size_t i;
+	int k, *count, *sorted;
 
+	if (array == NULL || size < 2)
+		return;
 	k = array[0];
-	for (i = 1; i < (int)size; i++)
+	for (i = 1; i < size; i++)
 	{
 		if (array[i] > k)
 			k = array[i];
@@ -21,28 +24,26 @@ void counting_sort(int *array, size_t size)
 	count = malloc(sizeof(int) * (k + 1));
 	if (count == NULL)
 		return;
-	for (i = 0; i <= k; i++)
+	for (i = 0; i <= (size_t)k; i++)
 		count[i] = 0;
-	for (i = 0; i < (int)size; i++)
+	for (i = 0; i < size; i++)
 	{
 		count[array[i]]++;
 	}
 	print_array(count, k + 1);
-	for (i = 1; i <= k; i++)
-	{
+	for (i = 1; i <= (size_t)k; i++)
 		count[i] = count[i] + count[i - 1];
-	}
 	sorted = malloc(sizeof(int) * size);
 	if (sorted == NULL)
 	{
 		free(count);
 		return;
 	}
-	for (i = size - 1; i >= 0; i--)
+	for (i = size; i > 0; i--)
 	{
-		sorted[--count[array[i]]] = array[i];
+		sorted[--count[array[i - 1]]] = array[i - 1];
 	}
-	for (i = 0; i < (int)size; i++)
+	for (i = 0; i < size; i++)
 	{
 		array[i] = sorted[i];
 	}
