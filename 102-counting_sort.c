@@ -10,29 +10,29 @@
 
 void counting_sort(int *array, size_t size)
 {
-	size_t i;
-	int k, *count, *sorted;
+	size_t i, k;
+	int *count, *sorted;
 
 	if (array == NULL || size < 2)
 		return;
-	k = array[0];
-	for (i = 1; i < size; i++)
+	k = 0;
+	for (i = 0; i < size; i++)
 	{
-		if (array[i] > k)
+		if ((size_t)array[i] > k)
 			k = array[i];
 	}
 	count = malloc(sizeof(int) * (k + 1));
 	if (count == NULL)
 		return;
-	for (i = 0; i <= (size_t)k; i++)
+	for (i = 0; i <= k; i++)
 		count[i] = 0;
 	for (i = 0; i < size; i++)
 	{
 		count[array[i]]++;
 	}
 	print_array(count, k + 1);
-	for (i = 1; i <= (size_t)k; i++)
-		count[i] = count[i] + count[i - 1];
+	for (i = 1; i <= k; i++)
+		count[i] += count[i - 1];
 	sorted = malloc(sizeof(int) * size);
 	if (sorted == NULL)
 	{
