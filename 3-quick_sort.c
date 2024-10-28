@@ -50,8 +50,10 @@ void sort_function(int *array, size_t size, int *o_array, size_t o_size)
 		swap(&array[i], &array[size - 1]);
 		print_array(o_array, o_size);
 	}
-	sort_function(array, i, o_array, o_size);
-	sort_function(array + i + 1, size - i - 1, o_array, o_size);
+	if (i > 1)
+		sort_function(array, i, o_array, o_size);
+	if (size - i - 1 > 1)
+		sort_function(array + i + 1, size - i - 1, o_array, o_size);
 }
 
 /**
