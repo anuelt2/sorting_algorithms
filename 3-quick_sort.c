@@ -11,11 +11,12 @@
 void quick_sort(int *array, size_t size)
 {
 	int pivot;
-	size_t i;
-	size_t j;
+	size_t i, j;
 	static int *o_array;
 	static size_t o_size;
 
+	if (array == NULL || size < 2)
+		return;
 	if (o_array == NULL)
 	{
 		o_array = array;
@@ -44,7 +45,6 @@ void quick_sort(int *array, size_t size)
 	}
 	quick_sort(array, i);
 	quick_sort(array + i + 1, size - i - 1);
-
 	if (array == o_array && size == o_size)
 	{
 		o_array = NULL;
