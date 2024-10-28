@@ -28,11 +28,11 @@ void counting_sort(int *array, size_t size)
 		count[i] = 0;
 	for (i = 0; i < size; i++)
 	{
-		count[array[i]]++;
+		count[array[i]] += 1;
 	}
-	print_array(count, k + 1);
 	for (i = 1; i <= k; i++)
 		count[i] += count[i - 1];
+	print_array(count, k + 1);
 	sorted = malloc(sizeof(int) * size);
 	if (sorted == NULL)
 	{
