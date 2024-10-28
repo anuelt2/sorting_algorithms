@@ -39,7 +39,7 @@ void sort_function(int *array, size_t size, int *o_array, size_t o_size)
 		{
 			if (i != j)
 			{
-				swap(&array[i], &array[j]);
+				swap_array(array, i, j);
 				print_array(o_array, o_size);
 			}
 			i++;
@@ -47,7 +47,7 @@ void sort_function(int *array, size_t size, int *o_array, size_t o_size)
 	}
 	if (i != size - 1)
 	{
-		swap(&array[i], &array[size - 1]);
+		swap_array(array, i, size - 1);
 		print_array(o_array, o_size);
 	}
 	if (i > 1)
@@ -57,17 +57,20 @@ void sort_function(int *array, size_t size, int *o_array, size_t o_size)
 }
 
 /**
- * swap - Swaps two values
+ * swap_array - Swaps two values in an array
  *
- * @a: Pointer to first value to swap
- * @b: Pointer to second value to swap
+ * @array: Array to be swapped
+ * @x: First value to swap
+ * @y: Second value to swap
  */
 
-void swap(int *a, int *b)
+void swap_array(int *array, int x, int y)
 {
 	int tmp;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	if (array[x] == array[y])
+		return;
+	tmp = array[x];
+	array[x] = array[y];
+	array[y] = tmp;
 }
