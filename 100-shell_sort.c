@@ -11,7 +11,7 @@
 void shell_sort(int *array, size_t size)
 {
 	size_t interval;
-	ssize_t i;
+	int i;
 	size_t j;
 
 	interval = 1;
